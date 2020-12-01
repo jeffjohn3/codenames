@@ -30,6 +30,6 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "src/consts/words.txt"
+    "**/*.tsx", "src/consts/words.txt", "next.config.js"
   ]
 }
