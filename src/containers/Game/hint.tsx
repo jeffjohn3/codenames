@@ -90,7 +90,7 @@ const Hint = ({ currentTeam, userTeam, hints, classes }) => {
     color: currentTeam == "redOperatives" ? colors.RED : colors.BLUE,
   };
 
-  if (!isSpymaster(userTeam)) {
+  if (!isSpymaster(userTeam) && hints) {
     const lastHint = hints[hints.length - 1];
     return (
       <React.Fragment>
@@ -101,13 +101,11 @@ const Hint = ({ currentTeam, userTeam, hints, classes }) => {
                 fontSize: "4em",
                 fontFamily: "Courier",
                 textAlign: "center",
-                // display: "inline-block",
                 whiteSpace: "nowrap",
               }}
             >
               <p style={{ ...hintStyle, marginRight: "6%" }}>{lastHint.word}</p>
               <p style={hintStyle}> {lastHint.count} </p>
-              {/* {`${lastHint.word} ${lastHint.count}`} */}
             </div>
             <p style={{ fontSize: "4em", fontFamily: "Courier" }}></p>
           </Col>
