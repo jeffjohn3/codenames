@@ -45,15 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Word = ({
-  word,
-  roomId,
-  userTeam,
-  index,
-  words,
-  setWords,
-  currentTeam,
-}) => {
+const Word = ({ word, roomId, userTeam, index, words, currentTeam }) => {
   const classes = useStyles({ word, userTeam });
 
   const onClick = async () => {
@@ -98,7 +90,5 @@ const mapStateToProps = (state) => ({
   currentTeam: state.game.currentTeam,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setWords: (words) => dispatch(setWordsAction(words)),
-});
+const mapDispatchToProps = (dispatch) => ({});
 export default connect(mapStateToProps, mapDispatchToProps)(Word);

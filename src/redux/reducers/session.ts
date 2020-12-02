@@ -1,4 +1,8 @@
-import { SET_ROOM_CONNECTED, SET_JOINED_ROOM } from "@/redux/actions/session";
+import {
+  SET_ROOM_CONNECTED,
+  SET_JOINED_ROOM,
+  RESET_SESSION,
+} from "@/redux/actions/session";
 
 const initialState = {
   roomConnected: false,
@@ -11,6 +15,8 @@ const session = (state = initialState, action) => {
       return { ...state, roomConnected: action.payload };
     case SET_JOINED_ROOM:
       return { ...state, joinedRoom: action.payload };
+    case RESET_SESSION:
+      return initialState;
     default:
       return state;
   }

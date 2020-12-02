@@ -1,6 +1,9 @@
 const debug = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  // basePath: "/codenames",
+  basePath: debug ? "" : "/codenames",
   assetPrefix: debug ? "" : "/codenames/",
+  env: {
+    prefix: debug ? "" : "/codenames",
+  },
 };

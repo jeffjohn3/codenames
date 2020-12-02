@@ -2,32 +2,11 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
-
-const useStyles = makeStyles((theme) => ({
-  root1212: {
-    padding: "2px 4px",
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    margin: "10px 0",
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
-  },
-  iconButton: {
-    padding: "0 5px",
-    color: "red",
-    float: "right",
-  },
-  divider: {
-    height: 28,
-    margin: 4,
-  },
-}));
+import { StyleRules, withStyles } from "@material-ui/core/styles";
 
 const Textbox = (props) => {
-  const classes = useStyles();
+  // const classes = useStyles();
+  const { classes } = props;
 
   const onChange = async (event) => {
     props.onChange(event.target.value);
@@ -44,29 +23,51 @@ const Textbox = (props) => {
   };
 
   return (
-    <Paper component="form" className={classes.root1212}>
-      <InputBase
-        className={classes.input}
-        placeholder={props.placeholder}
-        value={props.value}
-        disabled={props.disabled}
-        onChange={onChange}
-        inputProps={{ "aria-label": "Player 1" }}
-        onKeyPress={onKeyPress}
-      />
-
-      {/* <Divider className={classes.divider} orientation="vertical" /> */}
-      {/* {props.deletable && (
-        <IconButton
-          color="primary"
-          className={classes.iconButton}
-          aria-label="directions"
-          onClick={removePlayer}
-        >
-          <ClearIcon />
-        </IconButton>
-      )} */}
-    </Paper>
+    <InputBase
+      className={classes.input}
+      placeholder={props.placeholder}
+      value={props.value}
+      disabled={props.disabled}
+      onChange={onChange}
+      inputProps={{ "aria-label": "Player 1" }}
+      onKeyPress={onKeyPress}
+      style={{ padding: "4px 26px 3px 12px" }}
+    />
   );
 };
-export default Textbox;
+
+const TextboxWithStyles = withStyles((theme) => ({
+  input: {
+    // padding: "10px 10px",
+    borderRadius: 4,
+    position: "relative",
+    backgroundColor: theme.palette.background.paper,
+    border: "1px solid #ced4da",
+    fontSize: 16,
+    width: "100%",
+    padding: "10px 26px 10px 12px",
+    margin: "5px 0 5px 0",
+    transition: theme.transitions.create(["border-color", "box-shadow"]),
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      "Courier",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
+    "&:focus": {
+      borderRadius: 4,
+      borderColor: "#80bdff",
+      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)",
+    },
+  },
+}))(Textbox);
+
+export default TextboxWithStyles;

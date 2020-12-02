@@ -4,6 +4,8 @@ import {
   UPDATE_GAME,
   SET_WORDS,
   SET_CURRENT_TEAM,
+  SET_HINTS,
+  SET_GAME,
 } from "@/redux/actions/game";
 import { generateWords } from "@/services/wordsGenerator";
 import { GAME_STATES } from "@/consts/game";
@@ -13,6 +15,7 @@ const initialState = {
   state: GAME_STATES.NEW,
   words: generateWords(),
   currentTeam: "blueSpymaster",
+  hints: [],
 };
 
 const game = (state = initialState, action) => {
@@ -27,6 +30,10 @@ const game = (state = initialState, action) => {
       return { ...state, words: action.payload };
     case SET_CURRENT_TEAM:
       return { ...state, currentTeam: action.payload };
+    case SET_HINTS:
+      return { ...state, hints: action.payload };
+    case SET_GAME:
+      return action.payload;
     default:
       return state;
   }

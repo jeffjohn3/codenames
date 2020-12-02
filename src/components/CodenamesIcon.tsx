@@ -3,7 +3,7 @@ import { css } from "emotion";
 
 const CodenamesIcon = (props) => (
   <img
-    src={"/favicon.ico"}
+    src={`${process.env.prefix}/favicon.ico`}
     className={`${styles.spyIcon} ${props.className}`}
     style={props.style}
     width={40}

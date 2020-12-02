@@ -3,6 +3,7 @@ import {
   SET_JOINING_ROOM,
   SET_USER_ID,
   SET_USER_TEAM,
+  RESET_JOIN_ROOM,
 } from "@/redux/actions/joinRoom";
 
 const initialState = {
@@ -30,7 +31,9 @@ const joinRoom = (state = initialState, action) => {
     case SET_USER_TEAM: {
       return { ...state, userTeam: action.payload };
     }
-
+    case RESET_JOIN_ROOM: {
+      return initialState;
+    }
     default:
       return state;
   }

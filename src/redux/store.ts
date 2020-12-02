@@ -21,16 +21,21 @@ const enhancer = compose(
   // other store enhancers if any
 );
 
-const persistedReducer = persistReducer(
-  persistConfig,
-  combineReducers({
-    config,
-    session,
-    game,
-    joinRoom,
-  }),
-);
+const rootReducer = combineReducers({
+  config,
+  session,
+  game,
+  joinRoom,
+});
 
-export const store = createStore(persistedReducer, undefined, enhancer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+const initialState = {
+  config: config(undefined, {}),
+  game: game(undefined, {}),
+  session: session(undefined, {}),
+  joinRoom: joinRoom(undefined, {}),
+};
+
+export const store = createStore(persistedReducer, initialState, enhancer);
 export const persistor = persistStore(store);
 export default { store, persistor };

@@ -121,7 +121,6 @@ export const Room = ({
   };
 
   const onStartGame = async () => {
-    setRoomConnected(false);
     setGameState(GAME_STATES.STARTED);
   };
 

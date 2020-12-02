@@ -5,17 +5,12 @@ import _ from "lodash";
 
 import Word from "@/components/Word";
 import Hint from "@/containers/Game/hint";
-import EndTurn from "@/containers/Game/endTurn";
 import WaitingMessage from "@/containers/Game/waitingMessage";
-
-const isSpymaster = (team) => {
-  return team == "blueSpymaster" || team == "redSpymaster";
-};
 
 export const Game = ({ words, userTeam, currentTeam }) => {
   return (
     <React.Fragment>
-      <Row>
+      <Row style={{ marginBottom: "3%" }}>
         <Col
           xs={{ size: 12 }}
           md={{ size: 12 }}
@@ -27,15 +22,7 @@ export const Game = ({ words, userTeam, currentTeam }) => {
             })}
         </Col>
       </Row>
-      {currentTeam == userTeam ? (
-        isSpymaster(userTeam) ? (
-          <Hint />
-        ) : (
-          <EndTurn />
-        )
-      ) : (
-        <WaitingMessage />
-      )}
+      {currentTeam == userTeam ? <Hint /> : <WaitingMessage />}
     </React.Fragment>
   );
 };

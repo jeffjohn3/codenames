@@ -8,7 +8,7 @@ const saveGame = (meta = {}) => {
   const newRoom = {
     ...state.config,
     ...state.game,
-    ...meta,
+    // ...meta,
     updatedAt: databaseServerTimestamp,
   };
   return database
@@ -69,4 +69,9 @@ export const nextTeam = async (currentTeam) => {
   await database
     .ref(`rooms/${state.config.roomId}`)
     .update({ currentTeam: nextTeam });
+};
+
+export const setHints = async (hints) => {
+  const state = store.getState();
+  await database.ref(`rooms/${state.config.roomId}`).update({ hints: hints });
 };
