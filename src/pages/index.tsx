@@ -22,7 +22,7 @@ const Home = () => {
     <div className="container">
       <Head>
         <title>Codenames</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={`${process.env.prefix}/favicon.ico`} />
       </Head>
 
       <main>
